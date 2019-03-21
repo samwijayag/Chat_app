@@ -29,7 +29,6 @@ class App extends Component {
             roomId: '30845979',
             hooks: {
               onMessage: message => {
-                console.log('message.text:', message.text)
                 //1.store data in component
                   //Add state to componenet to pass data
                   //set new state
