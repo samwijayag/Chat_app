@@ -1,13 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+A chat app made with react and chatkit API for a scrimba course. More features to be added in the future. check todo list below for upcoming feautures. 
+
 ## Available Scripts
 
 ### `npm start`
 ### `npm test`
 ### `npm run build`
-
-A chat app made with react for a scrimba course. More features to be added in the future. check todo list below for upcoming feautures. 
-
 
 ## Todos: 
 
