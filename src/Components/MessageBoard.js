@@ -5,10 +5,11 @@ import Message from './Message'
 class MessageBoard extends React.Component {
 
 	render(){
-		const messageData = this.props.newChatMessage.map((message,index) => {
+		const messageData = this.props.messages.map((message,index) => {
 			return (
 				<div key={index} className="message">
-	                <Message  username={message.userId} text={message.text} />
+	                <Message  username={message.senderId} text={message.text} />
+	                
 	            </div>
 			)
 		})

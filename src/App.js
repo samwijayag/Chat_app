@@ -6,11 +6,13 @@ import NewRoomForm from './Components/NewRoomForm'
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 
 
+
+
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      newChatMessage: []
+      messages: []
     }
   }
 
@@ -25,7 +27,8 @@ class App extends Component {
 
   chatManager.connect()
     .then(currentUser => {
-        currentUser.subscribeToRoom({
+        this.currentUser = currentUser
+        this.currentUser.subscribeToRoom({
             roomId: '30845979',
             hooks: {
               onMessage: message => {
@@ -33,12 +36,19 @@ class App extends Component {
                   //Add state to componenet to pass data
                   //set new state
                    this.setState({
-                      newChatMessage: [...this.state.newChatMessage,message]
+                      messages: [...this.state.messages,message]
                    })
                 //2.pass the new data into messageBoard
               }
             }
         })
+    }) 
+  }
+
+  sendMessage = (text) => {
+    this.currentUser.sendMessage({
+      text,
+      roomId: '30845979'
     }) 
   }
  
@@ -47,8 +57,8 @@ class App extends Component {
     return (
       <div className="app">
         <RoomList />
-        <MessageBoard newChatMessage={this.state.newChatMessage}/>
-        <SendmessageForm />
+        <MessageBoard messages={this.state.messages}/>
+        <SendmessageForm sendMessage={this.sendMessage}/>
         <NewRoomForm />
       </div>
     );
